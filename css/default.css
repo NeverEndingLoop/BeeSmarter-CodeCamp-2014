@@ -16,3 +16,7 @@ html, body {
 input, textarea  { 
             -webkit-user-select:text; 
     }
+#content
+{
+ padding: 5%;   
+}

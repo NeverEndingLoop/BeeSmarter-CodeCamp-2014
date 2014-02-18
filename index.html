@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>fasz
+﻿<!DOCTYPE html>
+<html>
 <head>
 	<title>BeeSmarter2014</title>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -15,19 +15,24 @@
 </head>
 <body>
 
-<canvas id="canvas">
+<canvas id="content">
+A hardver nem támogatja a HTML5 Canvas technológiáját.
+</canvas>
+    
+<canvas id="tools">
 A hardver nem támogatja a HTML5 Canvas technológiáját.
 </canvas>
 
 <script type="text/javascript">
         var maxHeight = window.innerHeight;
         var maxWidth = window.innerWidth;
-        var terulet = document.getElementById('canvas');
-            terulet.width = maxWidth;
-            terulet.height = maxHeight;
-    document.addEventListener('touchmove', function(event) {
-    alert(event.touches.length);
-    }, false);
+        var content_terulet = document.getElementById('content');
+            content_terulet.width = maxWidth;
+            content_terulet.height = maxHeight;
+    
+    //document.addEventListener('touchmove', function(event) {
+    //alert(event.touches.length);
+    //}, false);
 </script>
 
 </body>
