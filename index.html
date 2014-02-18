@@ -1,0 +1,94 @@
+<!DOCTYPE html><!--HTML5 doctype-->
+<html>
+<head>
+	<title>BeeSmarter2014</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" href="css/default.css" />
+	<script src='intelxdk.js'></script>
+	<script type="text/javascript">
+		var onDeviceReady=function(){
+		intel.xdk.device.hideSplashScreen();
+		};
+		document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
+	</script>
+</head>
+<body>
+
+<canvas id="canvas">
+A hardver nem támogatja a HTML5 Canvas technológiáját.
+</canvas>
+
+<script type="text/javascript">
+        var maxHeight = window.innerHeight;
+        var maxWidth = window.innerWidth;
+        var terulet = document.getElementById('canvas');
+            terulet.width = maxWidth;
+            terulet.height = maxHeight;
+    document.addEventListener('touchmove', function(event) {
+    alert(event.touches.length);
+    }, false);
+var canvas;
+var ctx;
+var x = 75;
+var y = 50;
+var dragok = false;
+
+function rect(x,y,w,h) {
+ ctx.beginPath();
+ ctx.rect(x,y,w,h);
+ ctx.closePath();
+ ctx.fill();
+}
+
+function clear() {
+ ctx.clearRect(0, 0, maxWidth, maxHeight);
+}
+
+function init() {
+ canvas = document.getElementById("canvas");
+ ctx = canvas.getContext("2d");
+ return setInterval(draw, 10);
+}
+
+function draw() {
+ clear();
+ ctx.fillStyle = "#FAF7F8";
+ rect(0,0,maxWidth,maxHeight);
+ ctx.fillStyle = "#444444";
+ rect(x - 15, y - 15, 30, 30);
+}
+
+function myMove(e){
+ if (dragok){
+  x = e.pageX - canvas.offsetLeft;
+  y = e.pageY - canvas.offsetTop;
+ }
+}
+
+function myDown(e){
+ if (e.pageX < x + 15 + canvas.offsetLeft && e.pageX > x - 15 +
+ canvas.offsetLeft && e.pageY < y + 15 + canvas.offsetTop &&
+ e.pageY > y -15 + canvas.offsetTop){
+  x = e.pageX - canvas.offsetLeft;
+  y = e.pageY - canvas.offsetTop;
+  dragok = true;
+     //alert("hi");
+  canvas.onmousemove = myMove;
+ }
+}
+
+function myUp(){
+ dragok = false;
+ canvas.onmousemove = null;
+}
+
+init();
+canvas.onmousedown = myDown;
+canvas.onmouseup = myUp;
+
+</script>
+
+</section>
+</body>
+</html>
