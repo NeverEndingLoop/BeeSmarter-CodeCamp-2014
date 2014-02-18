@@ -9,6 +9,7 @@
 	<script type="text/javascript">
 		var onDeviceReady=function(){
 		intel.xdk.device.hideSplashScreen();
+            screendraw();
         //intel.xdk.device.setRotateOrientation("portrait");
 		};
 		document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
@@ -16,24 +17,59 @@
 </head>
 <body>
 
-<canvas id="content" style="background-color: red">
+<canvas id="content" style="background-color: white">
 A hardver nem támogatja a HTML5 Canvas technológiáját.
 </canvas>
     
-<canvas id="tools">
-A hardver nem támogatja a HTML5 Canvas technológiáját.
-</canvas>
 
 <script type="text/javascript">
         var maxHeight = window.innerHeight;
         var maxWidth = window.innerWidth;
-        var content_terulet = document.getElementById('content');
-            content_terulet.width = maxWidth;
-            content_terulet.height = maxHeight;
+        var content = document.getElementById('content');
+            content.width = maxWidth;
+            content.height = maxHeight;
+        var logo = content.getContext("2d");
+        var line_up = content.getContext("2d");
+        var line_down = content.getContext("2d");
+        var line_left = content.getContext("2d");
+        var line_right = content.getContext("2d");
+        var coord = content.getContext("2d");
+    function screendraw()
+    {
+            logo.font = "35px Century gothic";
+            logo.textAlign="center";
+            logo.fillText("CodeCamp 2014", maxWidth/2 , 40);
+            line_up.moveTo( (0+(maxWidth*0.02)) ,53);
+            line_up.lineTo(maxWidth-(maxWidth*0.02),53);
+            line_up.lineWidth=2;
+            line_up.stroke();
+            line_down.moveTo( (0+(maxWidth*0.02)) , 53+(maxWidth));
+            line_down.lineTo(maxWidth-(maxWidth*0.02),53+(maxWidth));
+            line_down.lineWidth=2;
+            line_down.stroke();
+            line_left.moveTo( (0+(maxWidth*0.02)) , 53);
+            line_left.lineTo( 0+(maxWidth*0.02), 53+(maxWidth));
+            line_left.lineWidth=2;
+            line_left.stroke();
+            line_right.moveTo( maxWidth-(maxWidth*0.02) , 53);
+            line_right.lineTo( maxWidth-(maxWidth*0.02), 53+(maxWidth));
+            line_right.lineWidth=2;
+            line_right.stroke();
+
+    }
     
-    //document.addEventListener('touchmove', function(event) {
-    //alert(event.touches.length);
-    //}, false);
+    function erasescreen()
+    {
+        coord.clearRect ( 0 , 0 ,maxWidth , maxHeight);
+    }
+    document.addEventListener('touchmove', function(event) {
+            event.preventDefault();
+            erasescreen();
+            screendraw();
+            coord.font = "35px Century gothic";
+            coord.textAlign="center";
+            coord.fillText("X:"+event.touches[0].pageX+" Y:"+event.touches[0].pageY, maxWidth/2 , maxHeight-50);
+    }, false);
 </script>
 
 </body>
