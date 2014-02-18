@@ -1,4 +1,5 @@
-BeeSmarter-CodeCamp-2014
+﻿BeeSmarter Code
 ========================
+
 
 Fejlesztés alatt álló android mobil alkalmazás. 
