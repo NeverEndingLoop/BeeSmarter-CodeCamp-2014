@@ -9,13 +9,14 @@
 	<script type="text/javascript">
 		var onDeviceReady=function(){
 		intel.xdk.device.hideSplashScreen();
+        //intel.xdk.device.setRotateOrientation("portrait");
 		};
 		document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
 	</script>
 </head>
 <body>
 
-<canvas id="content">
+<canvas id="content" style="background-color: red">
 A hardver nem támogatja a HTML5 Canvas technológiáját.
 </canvas>
     
