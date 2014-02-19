@@ -64,11 +64,11 @@
         coord.clearRect ( 0 , 0 ,maxWidth , maxHeight);
     }
     document.addEventListener('touchmove', function(event) {
-            event.preventDefault();
             erasescreen();
             screendraw();
             coord.textAlign="center";
             coord.font = "35px Century gothic";
+            event.preventDefault();
             coord.fillText("X:"+event.touches[0].pageX+" Y:"+event.touches[0].pageY, maxWidth/2 , maxHeight-50);
     }, false);
     
