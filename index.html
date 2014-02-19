@@ -9,7 +9,7 @@
 	<script type="text/javascript">
 		var onDeviceReady=function(){
 		intel.xdk.device.hideSplashScreen();
-            screendraw();
+    
         //intel.xdk.device.setRotateOrientation("portrait");
 		};
 		document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
@@ -17,23 +17,24 @@
 </head>
 <body>
 
-<canvas id="content" style="background-color: white">
-A hardver nem támogatja a HTML5 Canvas technológiáját.
+<canvas id="content" style="background-color: white;height:100%;">
+    A hardver nem támogatja a HTML5 Canvas technológiáját.
 </canvas>
     
 
 <script type="text/javascript">
-        var maxHeight = window.innerHeight;
-        var maxWidth = window.innerWidth;
-        var content = document.getElementById('content');
-            content.width = maxWidth;
-            content.height = maxHeight;
-        var logo = content.getContext("2d");
-        var line_up = content.getContext("2d");
-        var line_down = content.getContext("2d");
-        var line_left = content.getContext("2d");
-        var line_right = content.getContext("2d");
-        var coord = content.getContext("2d");
+    var maxHeight = window.innerHeight;
+    var maxWidth = window.innerWidth;
+    var content = document.getElementById('content');
+        content.width = maxWidth;
+        content.height = maxHeight;
+    var logo = content.getContext("2d");
+    var line_up = content.getContext("2d");
+    var line_down = content.getContext("2d");
+    var line_left = content.getContext("2d");
+    var line_right = content.getContext("2d");
+    var coord = content.getContext("2d");
+    screendraw();
     function screendraw()
     {
             logo.font = "35px Century gothic";
@@ -66,10 +67,11 @@ A hardver nem támogatja a HTML5 Canvas technológiáját.
             event.preventDefault();
             erasescreen();
             screendraw();
-            coord.font = "35px Century gothic";
             coord.textAlign="center";
+            coord.font = "35px Century gothic";
             coord.fillText("X:"+event.touches[0].pageX+" Y:"+event.touches[0].pageY, maxWidth/2 , maxHeight-50);
     }, false);
+    
 </script>
 
 </body>
