@@ -34,6 +34,7 @@
     var line_left = content.getContext("2d");
     var line_right = content.getContext("2d");
     var coord = content.getContext("2d");
+    //var imgage = newImage();
     screendraw();
     function screendraw()
     {
@@ -58,6 +59,12 @@
             line_right.stroke();
 
     }
+    function drawObj(){
+        image.onload = function(){
+            content.drawImage(image,10,10,20,20);
+        };
+        image.src = "asd.png";
+    }
     
     function erasescreen()
     {
@@ -71,6 +78,8 @@
             event.preventDefault();
             coord.fillText("X:"+event.touches[0].pageX+" Y:"+event.touches[0].pageY, maxWidth/2 , maxHeight-50);
     }, false);
+    
+    
     
 </script>
 
